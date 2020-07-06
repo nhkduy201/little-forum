@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  #carouselExampleIndicators.carousel.slide(data-ride='carousel', data-interval="5000")
+    ol.carousel-indicators
+      li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+      li(data-target='#carouselExampleIndicators', data-slide-to='1')
+      li(data-target='#carouselExampleIndicators', data-slide-to='2')
+    .carousel-inner
+      .carousel-item.active(style="background-image: url('/images/night.jpg');")
+        .carousel-caption
+          h2.display-3 Night
+      .carousel-item(style="background-image: url('/images/mountain.jpg');")
+        .carousel-caption
+          h2.display-3 Mountain
+      .carousel-item(style="background-image: url('/images/bridge.jpg');")
+        .carousel-caption
+          h2.display-3 Bridge
+    a.carousel-control-prev(href='#carouselExampleIndicators', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+  h1.mt-2 Hello Pug
+  p.lead This template engine is awesome
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  p.lead Hello I'm #{adminName}. I'm #{old} years old.

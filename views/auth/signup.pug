@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  h1 Sign Up
+  form(action="/auth/signup", method="POST", enctype="multipart/form-data")
+    label(for="name") Name
+    input(id="name", type="text", name="name", class="form-control", value= values ? values.name : '')
+    br
+    if errors
+      if errors[0].length
+        .alert.alert-danger= errors[0]
+    label(for="phone") Phone
+    input(id="phone", type="text", name="phone", class="form-control", value= values ? values.phone : '')
+    br
+    if errors
+      if errors[1].length
+        .alert.alert-danger= errors[1]
+    label(for="age") Age
+    select(id="age", name="age", class="form-control")
+      option(value="18") 18
+      option(value="20") 20
+      option(value="22") 22
+    br
+    label(for="email") Email
+    input(id="email", type="text", name="email", class="form-control", value= values ? values.email : '')
+    br
+    if errors
+      if errors[2].length
+        .alert.alert-danger= errors[2]
+    label(for="password") Password
+    input(id="password", type="password", name="password", class="form-control")
+    br
+    if errors
+      if errors[3].length
+        .alert.alert-danger= errors[3]
+    label(for="password") Confirm Password
+    input(id="password", type="password", name="confirmPassword", class="form-control")
+    br
+    if errors
+      if errors[4].length
+        .alert.alert-danger= errors[4]
+    label(for="avatar") Avatar
+    input(id="avatar", type="file", name="avatar", class="form-control-file")
+    br
+    if errors
+      if errors[5].length
+        .alert.alert-danger= errors[5]
+    button(type="submit", class="btn btn-primary") Create
+  if values
+    if values.age
+      script.
+        var age = document.getElementById("age");
+        age.value = #{values.age};

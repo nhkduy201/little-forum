@@ -1,0 +1,60 @@
+doctype hmtl
+html
+  head
+    title Awesome Page
+    meta(charset="utf-8")
+    meta(name='description', content='There are many bushes here!')
+    meta(name='keywords', content='bush, talking, user, avatar, store')
+    meta(property='og:type', content='website')
+    meta(property='og:title', content='Bush - There are many bushes here!')
+    meta(property='og:url', content='/')
+    meta(property='og:site_name', content='Talking Bush')
+    meta(property='og:description', content='Bush is a website that has many many bushes!')
+    meta(property='og:locale', content='vi')
+    meta(property='og:image', content='/images/meta-cover.jpg')
+    meta(name="viewport" content="width=device-width,initial-scale=1.0")
+    link(rel="shortcut icon" type="image/x-icon" href="/images/bush.ico")
+    link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css")
+    link(rel="stylesheet" href="/styles/custom.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.fixed-top
+      a.navbar-brand(href='/')
+        img.d-inline-block.align-top(src='/images/bush.png', width='30', height='30', alt='')
+        span.ml-2 Bush
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav.ml-auto
+          a.nav-item.nav-link.text-light(href='/')
+            i.m-1.fa.fa-home
+            | Home 
+          a.nav-item.nav-link.text-light(href='/about')
+            i.m-1.fa.fa-info-circle
+            | About
+          a.nav-item.nav-link.text-light(href='/users')
+            i.m-1.fa.fa-user-circle-o  
+            | User
+          if !user
+            a.nav-item.nav-link.text-light(href='/auth/login')
+              i.m-1.fa.fa-sign-in
+              | Log in
+            a.nav-item.nav-link.text-light(href='/auth/signup')
+              i.m-1.fa.fa-user-plus
+              | Sign Up
+          if user
+            a.nav-item.nav-link.text-light(href='/product/1')
+              i.m-1.fa.fa-shopping-cart
+              | Store
+            .btn-group.accout-group
+              a(type="button", class="btn btn-secondary", href="/users/view/" + user.id) 
+                img.rounded-circle(src= user.avatar ? "/" + user.avatar : "/images/base-avatar.png", alt=user.name, style="width: 30px;")
+              button(type="button", class="btn btn-secondary dropdown-toggle dropdown-toggle-split", data-toggle="dropdown")
+              .dropdown-menu.dropdown-menu-right.bg-secondary
+                a(class="dropdown-item bg-secondary text-light", href="/users/change-password") Change Password
+                a(class="dropdown-item bg-secondary text-light", href="/auth/logout") Log out
+    .container.mt-5.pt-2
+      block content
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js")

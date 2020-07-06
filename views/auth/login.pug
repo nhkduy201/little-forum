@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1.display-1 Login
+  form(method="POST")
+    label(for="email") Email
+    input(id="email", type="text", name="email", class="form-control", value= values ? values.email : '')
+    br
+    if errors
+      if errors[0].length
+        .alert.alert-danger= errors[0]
+    label(for="password") Password
+    input(id="password", type="password", name="password", class="form-control", value= values ? values.password : '')
+    br
+    if errors
+      if errors[1].length
+        .alert.alert-danger= errors[1]
+    a(href="/auth/forget-password/1" class="d-block mb-4 lead") Forget Password
+    button(type="submit", class="btn btn-primary") Login

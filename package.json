@@ -1,0 +1,29 @@
+{
+  "name": "1-hello-coders-tokyo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jimp": "^0.13.0",
+    "lowdb": "^1.0.0",
+    "multer": "^1.4.2",
+    "nodemailer": "^6.4.8",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "pug": "^2.0.4",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}

@@ -1,0 +1,53 @@
+extends ../layout
+
+block content
+  .row
+    .col-lg-8.offset-lg-2
+      .media.bg-dark.text-light.rounded.p-3.mt-2.d-flex.align-items-center
+        if selfViewing
+          .d-flex.mr-3.flex-row.align-items-center.position-relative
+            img.rounded-circle(src= "/" + viewUser.avatar, alt='Avatar', style='width:7em;')
+            form.ml-2.d-flex.flex-column.mb-0(method="POST", enctype="multipart/form-data")
+              label(for="avatar", class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center") New
+              input(id="avatar", type="file", name="avatar", class="d-none")
+              select.d-none(id="age", name="isConfirm")
+                option(value="-1") -1
+                option(value="0") 0
+                option(value="1") 1
+              br
+              button#change-avatar(class= confirm ? "btn btn-success" : "btn btn-success d-none") Change
+              button(class= confirm ? "btn btn-danger" : "btn btn-danger d-none") Remove
+              button#submit.d-none(type="submit") Submit
+        else
+          img.rounded-circle.mr-3(src= "/" + viewUser.avatar, alt='Avatar', style='width:7em;')
+        .media-body
+          h4= viewUser.name
+          p.lead.mb-1 #{viewUser.age} year old
+          p.lead.mb-1 #{viewUser.phone}
+    if isImage == false
+      .col-lg-8.offset-lg-2.mt-1
+        .alert.alert-danger Avatar have to be image file!
+  if selfViewing        
+    script.
+      var submit = document.getElementById("submit");
+      var change = document.querySelector("button.btn.btn-success");
+      var exit = document.querySelector("button.btn.btn-danger");
+      var avatar = document.querySelector("input[type='file']");
+      var select = document.querySelector("select.d-none");
+      var overlay = document.querySelector("label[for='avatar']");
+      avatar.addEventListener("input", function(){
+        overlay.style.opacity = "0.8";
+        overlay.innerHTML = '<span class="spinner-border text-light"></span>';
+        submit.click();
+      });
+      exit.addEventListener("click", function(){
+        select.value = "0";
+        submit.click();
+      });
+      change.addEventListener("click", function(){
+        overlay.style.opacity = "0.8";
+        overlay.innerHTML = '<span class="spinner-border text-light"></span>';
+        select.value = "1";
+        submit.click();
+      });
+    

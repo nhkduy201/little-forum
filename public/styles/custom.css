@@ -1,0 +1,70 @@
+label {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+.carousel-caption {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  align-items: center;
+  justify-content: center;
+}
+.carousel-item {
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
+}
+label.btn.btn-dark {
+  width: 7rem;
+  height: 7rem;
+  top: 0;
+  left: 0;
+  position: absolute;
+  opacity: 0;
+}
+label.btn.btn-dark:hover {
+  opacity: 0.8;
+}
+form button#change-avatar {
+  margin-top: -1.5rem;
+  margin-bottom: 0.5rem;
+}
+.not-found-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin-top: -5vh;
+}
+.accout-group {
+  max-width: 200px;
+}
+.accout-group > *:active {
+  border: none;
+  outline: none;
+}
+@media screen and (max-width: 767px) {
+  .carousel-item {
+    height: 40vh;
+  }
+  .carousel-caption h2 {
+    font-size: 3rem;
+  }
+  .container h1 {
+    font-size: 2rem;
+  }
+  .container p {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container h1 {
+    font-size: 1.5rem;
+  }
+  .container p {
+    font-size: 1.2rem;
+  }
+}
