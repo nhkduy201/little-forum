@@ -4,7 +4,7 @@ var db = require("../db");
 
 var shortid = require("shortid");
 
-var bcrypt = require("bcrypt");
+var bcrypt = require("bcryptjs");
 
 var saltRounds = 10;
 
@@ -66,7 +66,7 @@ module.exports.signup = function (req, res) {
 
 module.exports.postSignup = async function (req, res) {
   req.body.id = shortid.generate();
-  req.body.avatar = req.file.path.split("\\").slice(1).join("/");
+  req.body.avatar = req.file.path.split("/").slice(1).join("/");
   await Jimp.read("./public/" + req.body.avatar)
     .then((image) => {
       if (image.bitmap.width === image.bitmap.height) {
@@ -82,11 +82,13 @@ module.exports.postSignup = async function (req, res) {
       console.log(err);
     });
   delete req.body.confirmPassword;
-  bcrypt.hash(req.body.password, saltRounds, (err, hash) => {
-    // Now we can store the password hash in db.
-    req.body.password = hash;
-    db.get("users").unshift(req.body).write();
-    res.redirect("/auth/login");
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(req.body.password, salt, function(err, hash) {
+      // Now we can store the password hash in db.
+      req.body.password = hash;
+      db.get("users").unshift(req.body).write();
+      res.redirect("/auth/login");
+    });
   });
 };
 module.exports.logout = function (req, res) {
@@ -197,12 +199,14 @@ module.exports.postForgetPass = function (req, res) {
     res.clearCookie("isConfirm", {
       signed: true,
     });
-    bcrypt.hash(req.body.new, saltRounds, (err, hash) => {
-      db.get("users").find({ id: user.id }).assign({ password: hash }).write();
-      res.clearCookie("user", {
-        signed: true,
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(req.body.new, salt, function(err, hash) {
+        db.get("users").find({ id: user.id }).assign({ password: hash }).write();
+        res.clearCookie("user", {
+          signed: true,
+        });
+        res.redirect("/auth/login");
       });
-      res.redirect("/auth/login");
     });
   }
 };

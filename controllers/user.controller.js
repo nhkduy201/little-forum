@@ -1,6 +1,6 @@
 var db = require("../db");
 
-var bcrypt = require("bcrypt");
+var bcrypt = require("bcryptjs");
 
 var saltRounds = 10;
 
@@ -87,7 +87,7 @@ module.exports.postChangeAvatar = async function (req, res) {
   var user = res.locals.user;
   var newAvatarPath;
   if (req.file) {
-    newAvatarPath = req.file.path.split("\\").slice(1).join("/");
+    newAvatarPath = req.file.path.split("/").slice(1).join("/");
   } else {
     if (changeStatus == -1) {
       if (user.tmpAvatarPath) {
@@ -220,8 +220,10 @@ module.exports.postChangePassword = async function (req, res) {
     });
     return;
   }
-  bcrypt.hash(req.body.new, saltRounds, (err, hash) => {
-    db.get("users").find({ id: user.id }).assign({ password: hash }).write();
-    res.redirect("/auth/login");
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(req.body.new, salt, function(err, hash) {
+      db.get("users").find({ id: user.id }).assign({ password: hash }).write();
+      res.redirect("/auth/login");
+    });
   });
 };

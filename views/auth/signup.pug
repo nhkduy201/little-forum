@@ -42,9 +42,6 @@ block content
     label(for="avatar") Avatar
     input(id="avatar", type="file", name="avatar", class="form-control-file")
     br
-    if errors
-      if errors[5].length
-        .alert.alert-danger= errors[5]
     button(type="submit", class="btn btn-primary") Create
   if values
     if values.age
