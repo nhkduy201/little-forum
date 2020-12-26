@@ -8,10 +8,10 @@ var db = low(adapter);
 db.defaults({ users: [], products: [] }).write();
 module.exports = db;
 
-// "name": "Nguyen Huynh Khanh Duy",
+// "name": "Duy",
 // "phone": "0111222333",
 // "age": "18",
-// "email": "nhkduy201@gmail.com",
+// "email": "****@gmail.com",
 // "password": "$2b$10$gg89tP11kjSkoMxLmvBTv.L.lYZy30f8O1Q1NrZMSTufVrgojM3HW",
 // "id": "n7GoWV8Ea",
 // "avatar": "uploads/avatar-1592711165869.jpeg"

@@ -66,21 +66,23 @@ module.exports.signup = function (req, res) {
 
 module.exports.postSignup = async function (req, res) {
   req.body.id = shortid.generate();
-  req.body.avatar = req.file.path.split("/").slice(1).join("/");
-  await Jimp.read("./public/" + req.body.avatar)
-    .then((image) => {
-      if (image.bitmap.width === image.bitmap.height) {
-        return;
-      }
-      const size =
-        image.bitmap.width > image.bitmap.height
-          ? image.bitmap.width
-          : image.bitmap.height;
-      image.cover(size, size).write("./public/" + req.body.avatar);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  if(req.file) {
+    req.body.avatar = req.file.path.split("/").slice(1).join("/");
+    await Jimp.read("./public/" + req.body.avatar)
+      .then((image) => {
+        if (image.bitmap.width === image.bitmap.height) {
+          return;
+        }
+        const size =
+          image.bitmap.width > image.bitmap.height
+            ? image.bitmap.width
+            : image.bitmap.height;
+        image.cover(size, size).write("./public/" + req.body.avatar);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   delete req.body.confirmPassword;
   bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(req.body.password, salt, function(err, hash) {

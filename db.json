@@ -1,5 +1,24 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Sư Phụ",
+      "phone": "0123456789",
+      "age": "20",
+      "email": "philippheminh2@gmail.com",
+      "password": "$2a$10$rbT7ESKt78E6tGtgnS1pZeb82cz80r49jyJ6crE3doYdXl6nZgYFK",
+      "id": "CURgPR9Zj",
+      "avatar": "images/base-avatar.png"
+    },
+    {
+      "name": "Duy Huynh Khanh Nguyen",
+      "phone": "0145896327",
+      "age": "18",
+      "email": "nhkduy201@gmail.com",
+      "password": "$2a$10$RgmEr93y0lCtWIGvY2AKceoGIxLTAmQeasB9nFEloXh8Lrhwz.wYW",
+      "id": "JwedjyCVr",
+      "avatar": "images/base-avatar.png"
+    }
+  ],
   "products": [
     {
       "id": "c7943dbd-6546-42fd-ad60-4849fc964c86",
