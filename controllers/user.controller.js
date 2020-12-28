@@ -22,8 +22,8 @@ const removeAccents = (str) => {
 
 module.exports.homeIndexRender = function (req, res) {
   res.render("index", {
-    old: 18,
-    adminName: "Hacker",
+    old: 19,
+    adminName: "Dev",
   });
 };
 

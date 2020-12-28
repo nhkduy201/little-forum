@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  #carouselExampleIndicators.carousel.slide(data-ride='carousel', data-interval="5000")
+  #carouselExampleIndicators.carousel.slide(data-ride='carousel', data-interval="2300")
     ol.carousel-indicators
       li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
       li(data-target='#carouselExampleIndicators', data-slide-to='1')
@@ -22,16 +22,6 @@ block content
     a.carousel-control-next(href='#carouselExampleIndicators', role='button', data-slide='next')
       span.carousel-control-next-icon(aria-hidden='true')
       span.sr-only Next
-  h1.mt-2 Hello Pug
-  p.lead This template engine is awesome
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
-  p.lead Hello I'm #{adminName}. I'm #{old} years old.
+  .text-center
+    h1.display-2.my-5 Hello
+    code.text-secondary.lead Hello I'm #{adminName}. I'm #{old} years old. Enjoy my website :v

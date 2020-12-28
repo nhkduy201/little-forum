@@ -1,7 +1,24 @@
 {
   "users": [
     {
-      "name": "Sư Phụ",
+      "name": "Thuy Nguyen",
+      "phone": "0123459876",
+      "age": "22",
+      "email": "thuynlsa@gmail.com",
+      "password": "$2a$10$v.Oh9a6Sv3pQbc/RHBl6D.9b6ijwaZVWH2b5r86zWQ7iQ8APP0yUq",
+      "id": "pWe4pCdNj"
+    },
+    {
+      "name": "Hoang Chuong",
+      "phone": "0879546213",
+      "age": "18",
+      "email": "lhchuong@gmail.com",
+      "password": "$2a$10$.p8VakBUKXtCqiclxYWQ.Ocu9JA2/o5WuWbmQVc7L0cTPoNRfp7dm",
+      "id": "bAxXH9Csu",
+      "avatar": "images/base-avatar.png"
+    },
+    {
+      "name": "Tran Chan",
       "phone": "0123456789",
       "age": "20",
       "email": "philippheminh2@gmail.com",
