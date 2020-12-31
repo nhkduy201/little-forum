@@ -48,11 +48,10 @@ module.exports.userCreateSuccess = function (req, res, next) {
     return error.length;
   });
   if (checkErrors.length) {
-    res.render("auth/signup", {
+    res.locals.reqErrorObj = {
       errors: errors,
       values: req.body,
-    });
-  } else {
-    next();
+    };
   }
+  next();
 };

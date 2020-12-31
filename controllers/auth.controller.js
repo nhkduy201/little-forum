@@ -2,15 +2,20 @@ require("dotenv").config();
 
 var db = require("../db");
 
+var uploadValidate = require("../validate/upload.validate");
+
 var shortid = require("shortid");
 
 var bcrypt = require("bcryptjs");
+
+var fs = require("fs");
 
 var saltRounds = 10;
 
 var nodemailer = require("nodemailer");
 
 var smtpTransport = require("nodemailer-smtp-transport");
+
 
 const Jimp = require("jimp");
 
@@ -66,8 +71,22 @@ module.exports.signup = function (req, res) {
 
 module.exports.postSignup = async function (req, res) {
   req.body.id = shortid.generate();
+  if(res.locals.reqErrorObj) {
+    let errorObj = res.locals.reqErrorObj;
+    if(req.file) {
+      try {
+        await fs.unlink(req.file.path, (err) => {
+          if (err) throw err;
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    res.render("auth/signup", errorObj);
+    return;
+  }
   if(req.file) {
-    req.body.avatar = req.file.path.split("/").slice(1).join("/");
+    req.body.avatar = uploadValidate.getUploadPath(req.file.path);
     await Jimp.read("./public/" + req.body.avatar)
       .then((image) => {
         if (image.bitmap.width === image.bitmap.height) {

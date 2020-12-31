@@ -1,6 +1,15 @@
 {
   "users": [
     {
+      "name": "Valid Name",
+      "phone": "0919191919",
+      "age": "20",
+      "email": "validemail@gmail.com",
+      "password": "$2a$10$H7QAHsrsHnuK/UUuFFc.AOE02jvWQ.OP8HVTQyQ5aN5dhV63qAh7y",
+      "id": "juz-2f5kF",
+      "avatar": "uploads/avatar-1609385610350.jpeg"
+    },
+    {
       "name": "Thuy Nguyen",
       "phone": "0123459876",
       "age": "22",

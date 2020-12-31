@@ -1,28 +1,47 @@
 extends ../layout
 
 block content
-  nav.mt-3(aria-label='...')
-  ul.pagination
-    if position == "top"
-      li.page-item.disabled
-        a.page-link(href="#", tabindex='-1', aria-disabled='true') Previous
-    else
-      li.page-item
-        a.page-link(href='/product/' + (currentPage - 1)) Previous
-      li.page-item
-        a.page-link(href='/product/' + (currentPage - 1)) #{currentPage - 1}
-    li.page-item.active(aria-current='page')
-      a.page-link(href="#")
-        | #{currentPage}
-        span.sr-only (current)
-    if position == "bot"
-      li.page-item.disabled
-        a.page-link(href='#', tabindex='-1', aria-disabled='true') Next
-    else
-      li.page-item
-      a.page-link(href='/product/' + (currentPage + 1)) #{currentPage + 1}
-      li.page-item
-        a.page-link(href='/product/' + (currentPage + 1)) Next
+  .mt-3.d-flex.flex-row
+    nav(aria-label='...')
+    ul.pagination.d-flex.align-items-center
+      if position == "top"
+        li.page-item.disabled
+          a.page-link(href="#", tabindex='-1', aria-disabled='true') 
+            i.fas.fa-fast-backward
+        li.page-item.disabled
+          a.page-link(href="#", tabindex='-1', aria-disabled='true') 
+            i.fas.fa-step-backward
+      else
+        li.page-item
+          a.page-link(href="/product/1") 
+            i.fas.fa-fast-backward
+        li.page-item
+          a.page-link(href='/product/' + (currentPage - 1))
+            i.fas.fa-step-backward
+        li.page-item
+          a.page-link(href='/product/' + (currentPage - 1)) #{currentPage - 1}
+      li.page-item.active(aria-current='page')
+        a.page-link(href="#")
+          | #{currentPage}
+          span.sr-only (current)
+      if position == "bot"
+        li.page-item.disabled
+          a.page-link(href='#', tabindex='-1', aria-disabled='true')
+            i.fas.fa-step-forward
+        li.page-item.disabled
+          a.page-link(href="#", tabindex='-1', aria-disabled='true') 
+            i.fas.fa-fast-forward
+      else
+        li.page-item
+        a.page-link(href='/product/' + (currentPage + 1)) #{currentPage + 1}
+        li.page-item
+          a.page-link(href='/product/' + (currentPage + 1))
+            i.fas.fa-step-forward
+        li.page-item
+          a.page-link(href='/product/' + lastPage) 
+            i.fas.fa-fast-forward
+    form(action="/product/", method="POST").ml-2
+      input(id="page", type="text", name="page", class="form-control", placeholder="page#", style="width: 4.5rem;")
   .row
     each product in products
       .col-sm-6.col-lg-4.col-xl-3.my-3
@@ -31,4 +50,4 @@ block content
           .card-body
             h5.card-title #{product.name}
             p.card-text #{product.description}
-            a.btn.btn-primary(href='#') #{product.price}
+            a.btn.btn-primary(href='#') #{product.price} $
